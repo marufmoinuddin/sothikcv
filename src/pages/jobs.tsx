@@ -2,11 +2,11 @@
 import React from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
-import NavLayout from '../modules/home/NavLayout.tsx'; // Reusing the NavLayout
+import NavLayout from '../modules/home/NavLayout'; // Remove the .tsx extension
 
 // Importing data from job detail pages
-import { jobTitle as job1Title, jobLocation as job1Location, jobCompany as job1Company, jobDeadline as job1Deadline } from './jobs/1.tsx';
-import { jobTitle as job2Title, jobLocation as job2Location, jobCompany as job2Company, jobDeadline as job2Deadline } from './jobs/2.tsx';
+import { jobTitle as job1Title, jobLocation as job1Location, jobCompany as job1Company, jobDeadline as job1Deadline } from './jobs/1';
+import { jobTitle as job2Title, jobLocation as job2Location, jobCompany as job2Company, jobDeadline as job2Deadline } from './jobs/2';
 
 const Jobs: React.FC = () => {
   const jobListings = [

@@ -1,26 +1,12 @@
 // src/modules/home/NavLayout.tsx
 import React from 'react';
 import { NavBarActions, StyledButton } from '../builder/nav-bar/atoms';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { BsFacebook, BsMessenger } from 'react-icons/bs';
 import Image from 'next/image';
 import Link from 'next/link';
 
-
 const NavLayout: React.FC = () => {
-  const controls = useAnimation();
-  const animationEffectsHoverEnter = { scale: 1.05 };
-  const animationEffectsHoverLeave = { scale: 1 };
-  const animationEffectsFirstLoad = {
-    scale: [0.9, 1],
-    opacity: [0, 1],
-  };
-  const transtionEffects = {
-    type: 'spring',
-    stiffness: 400,
-    damping: 17,
-  };
-
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: [0, 1] }} className="scroll-smooth">
       <nav className="sticky top-0 z-20 h-14 w-full bg-resume-800 flex py-2.5 px-4 xl:px-60 items-center shadow-level-8dp">
@@ -55,10 +41,8 @@ const NavLayout: React.FC = () => {
               <BsMessenger className="h-6 w-6" fill="white" />
             </a>
           </NavBarActions>
-          </div>
+        </div>
       </nav>
-
-      
     </motion.div>
   );
 };

@@ -5,6 +5,7 @@ import Head from 'next/head';
 import BlogLayout from '../modules/home/NavLayout';
 import { blogTitle as blog1Title, blogShortContent as blog1ShortContent } from './blogs/1'; // Import variables from 1.tsx
 import { blogTitle as blog2Title, blogShortContent as blog2ShortContent } from './blogs/2';
+
 const Blogs: React.FC = () => {
   const blogPosts = [
     { id: 1, title: blog1Title, shortContent: blog1ShortContent },
@@ -25,11 +26,9 @@ const Blogs: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {blogPosts.map((post) => (
             <Link key={post.id} href={`/blogs/${post.id}`}>
-              <div className="p-4 border border-gray-300 rounded">
+              <div className="p-4 border border-gray-300 rounded cursor-pointer">
                 <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-                <p className="text-lg mb-4">
-                  {post.shortContent}
-                </p>
+                <p className="text-lg mb-4">{post.shortContent}</p>
                 {/* Optionally include BlogPost component */}
               </div>
             </Link>
