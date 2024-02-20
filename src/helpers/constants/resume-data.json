@@ -1,0 +1,203 @@
+{
+  "basics": {
+    "name": "Your name",
+    "label": "Your job title",
+    "image": "https://example.com/your-image.jpg",
+    "email": "youremail@example.com",
+    "phone": "+01 234567890",
+    "url": "www.your-resume-website.com",
+    "summary": "Your professional summary goes here.",
+    "location": {
+      "address": "",
+      "postalCode": "",
+      "city": "Your City",
+      "countryCode": "",
+      "region": ""
+    },
+    "relExp": "Your relevant experience",
+    "totalExp": "Your total experience",
+    "objective": "Your career objective goes here.",
+    "profiles": [
+      {
+        "network": "linkedin",
+        "username": "your-linkedin-username",
+        "url": "https://www.linkedin.com/in/your-linkedin-username/"
+      },
+      {
+        "network": "twitter",
+        "username": "your-twitter-username",
+        "url": "https://www.twitter.com/your-twitter-username/"
+      },
+      {
+        "network": "github",
+        "username": "your-github-username",
+        "url": "https://github.com/your-github-username/"
+      },
+      {
+        "network": "hackerrank",
+        "username": "your-hackerrank-username",
+        "url": "https://www.hackerrank.com/your-hackerrank-username/"
+      },
+      {
+        "network": "hackerearth",
+        "username": "your-hackerearth-username",
+        "url": "https://www.hackerearth.com/your-hackerearth-username/"
+      },
+      {
+        "network": "codechef",
+        "username": "your-codechef-username",
+        "url": "https://www.codechef.com/your-codechef-username/"
+      },
+      {
+        "network": "leetcode",
+        "username": "your-leetcode-username",
+        "url": "https://leetcode.com/your-leetcode-username/"
+      }
+    ]
+  },
+
+  "skills": {
+    "languages": [
+      { "name": "JavaScript", "level": 90 },
+      { "name": "HTML5", "level": 80 },
+      { "name": "CSS", "level": 80 }
+    ],
+    "frameworks": [
+      { "name": "React", "level": 70 },
+      { "name": "Angular", "level": 70 }
+    ],
+    "technologies": [
+      { "name": "Algorithms", "level": 3 },
+      { "name": "Progressive Web Apps", "level": 3 },
+      { "name": "SQL", "level": 3 },
+      { "name": "Data Structures", "level": 3 }
+    ],
+    "libraries": [
+      { "name": "jQuery", "level": 3 },
+      { "name": "Redux", "level": 3 }
+    ],
+    "databases": [{ "name": "Firebase", "level": 3 }],
+    "practices": [
+      { "name": "Component-based architecture", "level": 3 },
+      { "name": "Agile methodology", "level": 3 },
+      { "name": "Design Patterns", "level": 3 },
+      { "name": "Test Driven Development", "level": 3 },
+      { "name": "MVC", "level": 3 }
+    ],
+    "tools": [
+      { "name": "Git", "level": 3 },
+      { "name": "VS Code", "level": 3 },
+      { "name": "Jira", "level": 3 },
+      { "name": "Webpack", "level": 3 },
+      { "name": "Eclipse", "level": 3 },
+      { "name": "Bitbucket", "level": 3 }
+    ]
+  },
+
+  "work": [
+    {
+      "id": "1",
+      "name": "Your Company 1",
+      "position": "Your Position 1",
+      "url": "",
+      "startDate": "Your Start Date 1",
+      "isWorkingHere": true,
+      "endDate": null,
+      "highlights": [
+        "* Your work highlight goes here."
+      ],
+      "summary": "<ul><li>Your work summary goes here.</li></ul>",
+      "years": ""
+    },
+    {
+      "id": "2",
+      "name": "Your Company 2",
+      "position": "Your Position 2",
+      "url": "",
+      "startDate": "Your Start Date 2",
+      "isWorkingHere": false,
+      "endDate": "Your End Date 2",
+      "highlights": [
+        "* Your work highlight goes here."
+      ],
+      "summary": "<ul><li>Your work summary goes here.</li></ul>",
+      "years": "Your Duration 2"
+    },
+    {
+      "id": "3",
+      "name": "Your Company 3",
+      "position": "Your Position 3",
+      "url": "",
+      "startDate": "Your Start Date 3",
+      "isWorkingHere": false,
+      "endDate": "Your End Date 3",
+      "highlights": [
+        "* Your work highlight goes here."
+      ],
+      "summary": "<ul><li>Your work summary goes here.</li></ul>",
+      "years": "Your Duration 3"
+    }
+  ],
+
+  "education": [
+    {
+      "id": "1",
+      "institution": "Your University",
+      "url": "https://www.youruniversity.edu/",
+      "studyType": "Your Degree",
+      "area": "Your Area of Study",
+      "startDate": "Your Start Year",
+      "isStudyingHere": false,
+      "endDate": "Your End Year",
+      "score": "Your GPA",
+      "courses": ["Course 1", "Course 2"]
+    },
+    {
+      "id": "2",
+      "institution": "Another University",
+      "url": "https://www.anotheruniversity.edu/",
+      "studyType": "Another Degree",
+      "area": "Another Area of Study",
+      "startDate": "Another Start Year",
+      "isStudyingHere": false,
+      "endDate": "Another End Year",
+      "score": "Another GPA",
+      "courses": ["Course 3", "Course 4"]
+    }
+  ],
+
+  "activities": {
+    "involvements": "<ul><li>Your involvement goes here.</li></ul>",
+    "achievements": "<ul><li>Your achievement goes here.</li></ul>"
+  },
+
+  "volunteer": [
+    {
+      "id": "1",
+      "organization": "Volunteer Organization",
+      "position": "Volunteer Position",
+      "url": "https://volunteerorganization.org/",
+      "startDate": "Your Start Date",
+      "endDate": "Your End Date",
+      "summary": "Your volunteer summary goes here.",
+      "highlights": ["Your highlight 1", "Your highlight 2"],
+      "isVolunteeringNow": false
+    }
+  ],
+  "awards": [
+    {
+      "title": "Your Award 1",
+      "date": "Your Date 1",
+      "awarder": "Your Awarder 1",
+      "summary": "Your Summary 1",
+      "id": "1"
+    },
+    {
+      "title": "Your Award 2",
+      "date": "Your Date 2",
+      "awarder": "Your Awarder 2",
+      "summary": "Your Summary 2",
+      "id": "2"
+    }
+  ]
+}
