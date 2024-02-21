@@ -1,10 +1,10 @@
-# Resume Builder User Guide
+# User Guide
 
-Resume Builder works best on a desktop.
+SothikCV works best on a desktop.
 
 ## Building a Resume
 
-1. Visit https://e-resume.vercel.app/
+1. Visit https://sothikcv.vercel.app/
 1. Select "Editor" in the top pane
 1. Select "TEMPLATES" in the top pane and select your desired template
 1. Select "COLOURS" in the top pane and select your desired color scheme
@@ -12,9 +12,10 @@ Resume Builder works best on a desktop.
 1. When you're done, 
     - Export your data by selecting "Export" in the top pane. This will generate a JSON file that gets downloaded to your local device. Save this file for later use.
     - Download the resume as a PDF by selecting "DOWNLOAD AS PDF" in the top pane
+You can also read our blogs and job posts from top pane.
 
 ## Editing a Resume
-1. Visit https://e-resume.vercel.app/
+1. Visit https://sothikcv.vercel.app/
 1. Select "Editor" in the top pane
 1. Select "Import in the top pane". Import the JSON that was generated in the [Building a Resume](#building-a-resume) section.
 
