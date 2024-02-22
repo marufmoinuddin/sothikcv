@@ -1,17 +1,31 @@
 // src/pages/blogs.tsx
-import React from 'react';
-import Link from 'next/link';
-import Head from 'next/head';
-import BlogLayout from '../modules/home/NavLayout';
-import { blogTitle as blog1Title, blogShortContent as blog1ShortContent } from './blogs/1'; // Import variables from 1.tsx
-import { blogTitle as blog2Title, blogShortContent as blog2ShortContent } from './blogs/2';
+import React, { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import Head from "next/head";
+import fs from "fs";
+import path from "path";
+import BlogLayout from "../modules/home/NavLayout";
 
-const Blogs: React.FC = () => {
-  const blogPosts = [
-    { id: 1, title: blog1Title, shortContent: blog1ShortContent },
-    { id: 2, title: blog2Title, shortContent: blog2ShortContent },
-    // Add more blog posts as needed
-  ];
+interface BlogsProps {
+  blogPosts: BlogPost[];
+}
+
+const Blogs: React.FC<BlogsProps> = ({ blogPosts }) => {
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+  const router = useRouter();
+  const { query } = router;
+
+  useEffect(() => {
+    const selectedBlog = blogPosts.find(
+      (post) => post.id === Number(query?.id)
+    );
+    setSelectedPost(selectedBlog || null);
+  }, [query]);
+
+  const handlePostClick = (post: BlogPost) => {
+    setSelectedPost(post);
+    router.push(`/blogs?id=${post.id}`);
+  };
 
   return (
     <div>
@@ -23,20 +37,84 @@ const Blogs: React.FC = () => {
       <BlogLayout />
       <div className="mx-6 md:mx-40 xl:mx-60 mt-8">
         <h1 className="text-3xl font-bold mb-6 text-resume-800">Blog Posts</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {blogPosts.map((post) => (
-            <Link key={post.id} href={`/blogs/${post.id}`}>
-              <div className="p-4 border border-gray-300 rounded cursor-pointer">
+        {selectedPost ? (
+          // Render the selected blog post content
+          <div>
+            <div
+              dangerouslySetInnerHTML={{ __html: selectedPost.content || "" }}
+            ></div>
+            <button
+      className="back-button"
+      onClick={() => router.push("/blogs")}
+    >
+    Go Back
+    </button>
+          </div>
+        ) : (
+          // Render the list of blog posts
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {blogPosts.map((post) => (
+              <div
+                key={post.id}
+                className="p-4 border border-gray-300 rounded cursor-pointer"
+                onClick={() => handlePostClick(post)}
+              >
                 <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-                <p className="text-lg mb-4">{post.shortContent}</p>
-                {/* Optionally include BlogPost component */}
+                <p className="text-lg mb-4">{post.date}</p>
               </div>
-            </Link>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
 };
+
+interface BlogPost {
+  id: number;
+  title: string;
+  date?: string;
+  content?: string;
+
+}
+
+export async function getStaticProps() {
+  const blogDirectory = path.join(process.cwd(), "src/pages/blogs");
+  let filenames;
+
+  try {
+    filenames = fs.readdirSync(blogDirectory);
+  } catch (error) {
+    console.error(`Error reading blog directory`);
+    return {
+      props: {
+        blogPosts: [],
+      },
+    };
+  }
+
+  const blogPosts = filenames.map((filename, index) => {
+    const filePath = path.join(blogDirectory, filename);
+    const fileContent = fs.readFileSync(filePath, "utf-8");
+
+    const title =/<h1>(.*?)<\/h1>/s.exec(fileContent)?.[1] || `Blog Post ${index + 1}`;    
+    const date = /<p>(.*?)<\/p>/s.exec(fileContent)?.[1] || "hello";
+    const content = fileContent;
+
+    return {
+      id: index + 1,
+      title,
+      date,
+      content,
+
+    };
+  });
+
+  return {
+    props: {
+      blogPosts,
+    },
+  };
+}
 
 export default Blogs;
