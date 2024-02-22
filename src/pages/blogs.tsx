@@ -27,6 +27,25 @@ const Blogs: React.FC<BlogsProps> = ({ blogPosts }) => {
     router.push(`/blogs?id=${post.id}`);
   };
 
+  const calculateDaysAgo = (dateString?: string) => {
+    if (!dateString) {
+      return "Unknown date";
+    }
+
+    const postDate = new Date(dateString);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - postDate.getTime();
+    const daysAgo = Math.floor(timeDifference / (1000 * 3600 * 24));
+    return `${daysAgo} days ago`;
+  };
+
+  // Sort blog posts by date in descending order
+  const sortedBlogPosts = blogPosts.sort((a, b) => {
+    const dateA = new Date(a.date || "");
+    const dateB = new Date(b.date || "");
+    return dateB.getTime() - dateA.getTime();
+  });
+
   return (
     <div>
       <Head>
@@ -38,29 +57,28 @@ const Blogs: React.FC<BlogsProps> = ({ blogPosts }) => {
       <div className="mx-6 md:mx-40 xl:mx-60 mt-8">
         <h1 className="text-3xl font-bold mb-6 text-resume-800">Blog Posts</h1>
         {selectedPost ? (
-          // Render the selected blog post content
           <div>
             <div
               dangerouslySetInnerHTML={{ __html: selectedPost.content || "" }}
             ></div>
             <button
-      className="back-button"
-      onClick={() => router.push("/blogs")}
-    >
-    Go Back
-    </button>
+              className="back-button"
+              onClick={() => router.push("/blogs")}
+            >
+              Go Back
+            </button>
           </div>
         ) : (
-          // Render the list of blog posts
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {blogPosts.map((post) => (
+          // Render the list of sorted blog posts
+          <div className="grid grid-cols-1 gap-6">
+            {sortedBlogPosts.map((post) => (
               <div
                 key={post.id}
                 className="p-4 border border-gray-300 rounded cursor-pointer"
                 onClick={() => handlePostClick(post)}
               >
                 <h2 className="text-2xl font-semibold mb-2">{post.title}</h2>
-                <p className="text-lg mb-4">{post.date}</p>
+                <p className="text-lg mb-4">{calculateDaysAgo(post.date)}</p>
               </div>
             ))}
           </div>
@@ -75,7 +93,6 @@ interface BlogPost {
   title: string;
   date?: string;
   content?: string;
-
 }
 
 export async function getStaticProps() {
@@ -97,7 +114,8 @@ export async function getStaticProps() {
     const filePath = path.join(blogDirectory, filename);
     const fileContent = fs.readFileSync(filePath, "utf-8");
 
-    const title =/<h1>(.*?)<\/h1>/s.exec(fileContent)?.[1] || `Blog Post ${index + 1}`;    
+    const title =
+      /<h1>(.*?)<\/h1>/s.exec(fileContent)?.[1] || `Blog Post ${index + 1}`;
     const date = /<p>(.*?)<\/p>/s.exec(fileContent)?.[1] || "hello";
     const content = fileContent;
 
@@ -106,7 +124,6 @@ export async function getStaticProps() {
       title,
       date,
       content,
-
     };
   });
 

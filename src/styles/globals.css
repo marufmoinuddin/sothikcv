@@ -175,4 +175,10 @@ small, .small {
   background: #2980b9;
 }
 
+footer {
+  text-align: center;
+  background-color: #f0f0f0;
+  padding: 10px;
+}
+
 /* Add more styles as needed */
