@@ -22,10 +22,9 @@ body {
   *::before,
   *::after {
     -webkit-print-color-adjust: exact !important; /* Chrome, Safari, Edge */
-    color-adjust: exact !important; /*Firefox*/
+    print-color-adjust: exact !important; /* Updated property for Firefox */
   }
 }
-
 @page {
   size: A4 !important;
   margin: 0 !important;
